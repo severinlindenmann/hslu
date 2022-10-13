@@ -1,3 +1,4 @@
 ### DEV ###
 *.json
 *.env
+*.DS_STORE
