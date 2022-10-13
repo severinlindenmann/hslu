@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React from "react";
+import * as d3 from "d3";
+import RoadTrafficAccidentLocations from "./RoadTrafficAccidentLocations_8_Elemente.json";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.myRef = React.createRef();
+    this.dataset = RoadTrafficAccidentLocations.features;
+  }
+
+  componentDidMount() {
+    d3.select("body")
+      .selectAll("p")
+      .data(this.dataset)
+      .enter()
+      .append("p")
+      .text(function (t) {
+        return t.properties.AccidentType_de;
+      })
+      .style("color", "blue");
+  }
+
+  render() {
+    return <div ref={this.myRef}></div>;
+  }
 }
-
 export default App;
