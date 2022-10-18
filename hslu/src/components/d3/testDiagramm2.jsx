@@ -8,7 +8,7 @@ const TestDiagramm2 = () => {
   // const myRef = createRef();
 
   useEffect(() => {
-    d3.select(".testDiagramm2")
+    d3.select("#Diagramm2")
       .selectAll("p")
       .data(data)
       .enter()
@@ -19,7 +19,7 @@ const TestDiagramm2 = () => {
       .style("color", "blue");
   });
 
-  return <div className="testDiagramm2"></div>;
+  return <div id="Diagramm2"></div>;
   // ref={myRef}
 };
 
