@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import * as d3 from "d3";
-import RoadTrafficAccidentLocationsTest from "./RoadTrafficAccidentLocations_8_Elemente.json";
+import RoadTrafficAccidentLocationsTest from "./data/RoadTrafficAccidentLocations_8_Elemente.json";
 
 const TestDiagramm2 = () => {
   // const [data, setData] = useState(RoadTrafficAccidentLocationsTest.features);
