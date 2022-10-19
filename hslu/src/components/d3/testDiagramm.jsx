@@ -2,6 +2,11 @@ import React, { useEffect, useRef, useState } from "react";
 import * as d3 from "d3";
 import Button from "@mui/material/Button";
 import { getS3Data } from "./fetch_data";
+import Box from "@mui/material/Box";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
 
 const url =
   "https://severin.fra1.digitaloceanspaces.com/hslu/YearMonthCount.json";
@@ -9,6 +14,7 @@ const url =
 const TestDiagramm = (props) => {
   const { width, height } = props;
 
+  const [rawData, setRawData] = useState([]);
   const [data, setData] = useState([]);
   const [year, setYear] = useState(2013);
 
@@ -16,14 +22,14 @@ const TestDiagramm = (props) => {
 
   const margin = { top: 30, right: 30, bottom: 70, left: 60 };
 
-  // const scaleX = d3
-  //   .scaleBand()
-  //   .domain(data.map(({ label }) => label))
-  //   .range([0, width]);
+  const handleChange = (event) => {
+    setYear(event.target.value);
+    setData(rawData[event.target.value]);
+  };
 
   useEffect(() => {
     getS3Data(url).then((e) => {
-      setData(e[year]);
+      setRawData(e);
     });
 
     if (data && d3Container.current) {
@@ -86,7 +92,7 @@ const TestDiagramm = (props) => {
       // // Update existing D3 elements
       // update.attr("x", (d, i) => i * 40).text((d) => d);
 
-      // // Remove old D3 elements
+      // Remove old D3 elements
       // update.exit().remove();
     }
   }, [data]);
@@ -94,17 +100,21 @@ const TestDiagramm = (props) => {
   return (
     <>
       <svg width={width} height={height} ref={d3Container} />
-      <Button
-        onClick={() => {
-          // data
-          data.map((d, index) => {
-            console.log(d, index + 1);
-          });
-        }}
-        variant="contained"
-      >
-        Contained
-      </Button>
+      <FormControl fullWidth>
+        <InputLabel id="demo-simple-select-label">Year</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={year}
+          label="Year"
+          onChange={handleChange}
+        >
+          {Object.keys(rawData).map((d) => {
+            // console.log(d);
+            return <MenuItem value={d}>{d}</MenuItem>;
+          })}
+        </Select>
+      </FormControl>
     </>
   );
 };

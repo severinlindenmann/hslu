@@ -1,13 +1,18 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import * as d3 from "d3";
-import RoadTrafficAccidentLocationsTest from "./data/RoadTrafficAccidentLocations_8_Elemente.json";
+import { getS3Data } from "./fetch_data";
+
+const url =
+  "https://severin.fra1.digitaloceanspaces.com/hslu/RoadTrafficAccidentLocations_8_Elemente.json";
 
 const TestDiagramm2 = () => {
-  // const [data, setData] = useState(RoadTrafficAccidentLocationsTest.features);
-  const data = RoadTrafficAccidentLocationsTest.features;
-  // const myRef = createRef();
+  const [data, setData] = useState([]);
 
   useEffect(() => {
+    // getS3Data(url).then((e) => {
+    //   setData(e.features);
+    // });
+
     d3.select("#Diagramm2")
       .selectAll("p")
       .data(data)
