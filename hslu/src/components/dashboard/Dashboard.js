@@ -21,8 +21,11 @@ import { mainListItems } from "./listItems";
 // import Chart from "./Chart";
 // import Deposits from "./Deposits";
 // import Orders from "./Orders";
-import TestDiagramm from "../d3/testDiagramm";
-import TestDiagramm2 from "../d3/testDiagramm2";
+// import TestDiagramm from "../d3/testDiagramm";
+import Diagramm3 from "../d3/diagramm3";
+import Diagramm2 from "../d3/diagramm2";
+import Diagramm1 from "../d3/diagramm1";
+// import Svg from "../d3/diagramm3";
 
 function Copyright(props) {
   return (
@@ -169,8 +172,7 @@ function DashboardContent() {
           <Toolbar />
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
             <Grid container spacing={3}>
-              {/* Chart */}
-              <Grid item xs={12} md={8} lg={9}>
+              <Grid item xs={12} md={10} lg={9}>
                 <Paper
                   sx={{
                     p: 2,
@@ -179,11 +181,25 @@ function DashboardContent() {
                     // height: 240,
                   }}
                 >
-                  <TestDiagramm width={500} height={500} />
+                  <Diagramm1 />
+                </Paper>
+              </Grid>
+              {/* Chart */}
+              <Grid item xs={12} md={10} lg={9}>
+                <Paper
+                  sx={{
+                    p: 2,
+                    display: "flex",
+                    flexDirection: "column",
+                    // height: 240,
+                  }}
+                >
+                  <Diagramm3 />
+                  {/* <TestDiagramm width={500} height={500} /> */}
                 </Paper>
               </Grid>
               {/* Recent Deposits */}
-              <Grid item xs={12} md={4} lg={3}>
+              <Grid item xs={12} md={10} lg={9}>
                 <Paper
                   sx={{
                     p: 2,
@@ -192,9 +208,10 @@ function DashboardContent() {
                     // height: 240,
                   }}
                 >
-                  <TestDiagramm2 />
+                  <Diagramm2 />
                 </Paper>
               </Grid>
+
               {/* Recent Orders */}
               {/* <Grid item xs={12}>
                 <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>

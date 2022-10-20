@@ -2,3 +2,5 @@
 *.json
 *.env
 *.DS_STORE
+*venv
+*.csv
