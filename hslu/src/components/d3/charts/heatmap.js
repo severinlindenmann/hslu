@@ -1,7 +1,7 @@
 import * as d3 from "d3";
 import React, { useRef, useEffect } from "react";
 
-function CustomChart({ width, height, data, group, variable }) {
+function Heatmap({ width, height, data, group, variable }) {
   const ref = useRef();
 
   const myGroups = group;
@@ -9,7 +9,7 @@ function CustomChart({ width, height, data, group, variable }) {
   useEffect(() => {
     const svg = d3
       .select(ref.current)
-      .attr("width", width + 100)
+      .attr("width", width + 200)
       .attr("height", height + 100)
       //   .append("g")
       .attr("transform", `translate(${50},${50})`);
@@ -22,24 +22,22 @@ function CustomChart({ width, height, data, group, variable }) {
 
   const draw = () => {
     const svg = d3.select(ref.current);
-    // Build X scales and axis:
+
     const x = d3.scaleBand().range([0, width]).domain(myGroups).padding(0.01);
     svg
       .append("g")
       .attr("transform", `translate(0, ${height})`)
       .call(d3.axisBottom(x));
 
-    // Build X scales and axis:
     const y = d3.scaleBand().range([height, 0]).domain(myVars).padding(0.01);
     svg
       .append("g")
       .attr("transform", `translate(${width},0 )`)
       .call(d3.axisRight(y));
 
-    // Build color scale
     const myColor = d3
       .scaleLinear()
-      .range(["white", "#69b3a2"])
+      .range(["white", "#081cff"])
       .domain([1, 100]);
 
     svg
@@ -68,4 +66,4 @@ function CustomChart({ width, height, data, group, variable }) {
   );
 }
 
-export default CustomChart;
+export default Heatmap;

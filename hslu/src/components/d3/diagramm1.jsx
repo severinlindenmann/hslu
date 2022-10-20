@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import * as d3 from "d3";
-import CustomChart from "./customchart";
+import Heatmap from "./charts/heatmap";
 
 function Diagramm2() {
   const [data, setData] = useState([]);
@@ -24,9 +24,9 @@ function Diagramm2() {
     <div>
       {loading && <div>loading</div>}
       {!loading && (
-        <CustomChart
-          width={500}
-          height={500}
+        <Heatmap
+          width={450}
+          height={450}
           data={data}
           group={group}
           variable={variable}

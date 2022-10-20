@@ -25,6 +25,7 @@ import { mainListItems } from "./listItems";
 import Diagramm3 from "../d3/diagramm3";
 import Diagramm2 from "../d3/diagramm2";
 import Diagramm1 from "../d3/diagramm1";
+import Diagramm4 from "../d3/diagramm4";
 // import Svg from "../d3/diagramm3";
 
 function Copyright(props) {
@@ -211,7 +212,18 @@ function DashboardContent() {
                   <Diagramm2 />
                 </Paper>
               </Grid>
-
+              <Grid item xs={12} md={10} lg={9}>
+                <Paper
+                  sx={{
+                    p: 2,
+                    display: "flex",
+                    flexDirection: "column",
+                    // height: 240,
+                  }}
+                >
+                  <Diagramm4 />
+                </Paper>
+              </Grid>
               {/* Recent Orders */}
               {/* <Grid item xs={12}>
                 <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>

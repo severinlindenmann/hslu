@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import * as d3 from "d3";
-import BarChart from "./barchart";
+import BarChart from "./charts/barchart";
 
 function Diagramm2() {
   const [data, setData] = useState([]);
