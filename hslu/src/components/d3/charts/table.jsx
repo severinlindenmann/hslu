@@ -7,50 +7,8 @@ const columns = [
   {
     title: "Index",
     dataIndex: "index",
-    // filters: [
-    //   {
-    //     text: "Joe",
-    //     value: "Joe",
-    //   },
-    //   {
-    //     text: "Category 1",
-    //     value: "Category 1",
-    //     children: [
-    //       {
-    //         text: "Yellow",
-    //         value: "Yellow",
-    //       },
-    //       {
-    //         text: "Pink",
-    //         value: "Pink",
-    //       },
-    //     ],
-    //   },
-    //   {
-    //     text: "Category 2",
-    //     value: "Category 2",
-    //     children: [
-    //       {
-    //         text: "Green",
-    //         value: "Green",
-    //       },
-    //       {
-    //         text: "Black",
-    //         value: "Black",
-    //       },
-    //     ],
-    //   },
-    // ],
-    // filterMode: "tree",
-    // filterSearch: true,
-    // onFilter: (value, record) => record.name.includes(value),
-    // width: "30%",
   },
-  // {
-  //   title: "Age",
-  //   dataIndex: "age",
-  //   sorter: (a, b) => a.age - b.age,
-  // },
+
   {
     title: "AccidentYear",
     dataIndex: "AccidentYear",
@@ -174,6 +132,31 @@ const columns = [
   {
     title: "CantonCode",
     dataIndex: "CantonCode",
+    filters: [
+      {
+        text: "AG",
+        value: "AG",
+      },
+      {
+        text: "AI",
+        value: "AI",
+      },
+      {
+        text: "AR",
+        value: "AR",
+      },
+      {
+        text: "BE",
+        value: "BE",
+      },
+      {
+        text: "BL",
+        value: "BL",
+      },
+      // AG AI AR BE BL BS FR GE GL GR JU LU NE NW OW SG SH SO SZ TG TI UR VD VS ZG ZH
+    ],
+    onFilter: (value, record) => record.CantonCode.startsWith(value),
+    filterSearch: true,
   },
   {
     title: "MunicipalityCode",

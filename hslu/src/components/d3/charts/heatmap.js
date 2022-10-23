@@ -17,8 +17,9 @@ function Heatmap({ width, height, data, group, variable }) {
   }, []);
 
   useEffect(() => {
+    d3.select(ref.current).selectAll("*").remove();
     draw();
-  }, [data]);
+  }, [data, group, variable]);
 
   const draw = () => {
     const svg = d3.select(ref.current);
@@ -38,24 +39,24 @@ function Heatmap({ width, height, data, group, variable }) {
     const myColor = d3
       .scaleLinear()
       .range(["white", "#081cff"])
-      .domain([1, 100]);
+      .domain([1, 1000]);
 
     svg
       .selectAll()
       .data(data, function (d) {
-        return d.group + ":" + d.variable;
+        return d[0] + ":" + d[1];
       })
       .join("rect")
       .attr("x", function (d) {
-        return x(d.group);
+        return x(d[0]);
       })
       .attr("y", function (d) {
-        return y(d.variable);
+        return y(d[1]);
       })
       .attr("width", x.bandwidth())
       .attr("height", y.bandwidth())
       .style("fill", function (d) {
-        return myColor(d.value);
+        return myColor(d[2].length);
       });
   };
 

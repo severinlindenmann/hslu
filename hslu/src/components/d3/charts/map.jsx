@@ -1,8 +1,7 @@
-import React, { useRef, useEffect } from "react";
+import React, { useEffect } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 
 function LeafletMap({ data, year }) {
-  const ref = useRef();
   const position = [47.04, 8.31];
   useEffect(() => {
     draw();
@@ -16,7 +15,6 @@ function LeafletMap({ data, year }) {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      {console.log(data)}
       {data.map((d) => {
         return (
           <Marker key={d.index} position={[d.y_coordinates, d.x_coordinates]}>

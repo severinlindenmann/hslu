@@ -1,28 +1,35 @@
 import React, { useEffect, useState } from "react";
-import * as d3 from "d3";
 import LeafletMap from "./charts/map";
 
-function Diagramm4() {
+function Diagramm4(props) {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    d3.json(
-      "https://severin.fra1.digitaloceanspaces.com/hslu/YearCords.json"
-    ).then((d) => {
-      setData(
-        d.data.filter(function (el) {
-          return (
-            el.AccidentYear === "2013" &&
-            el.RoadType_de === "Nebenstrasse" &&
-            el.CantonCode === "AG"
-          );
-        })
-      );
-      setLoading(false);
-    });
-    return () => undefined;
-  }, []);
+    if (Array.isArray(props.data.currentDataSource)) {
+      console.log("test");
+      if (props.data.currentDataSource.length < 1500) {
+        console.log("test2");
+        setData(props.data.currentDataSource);
+        setLoading(false);
+      }
+      // d3.json(
+      //   "https://severin.fra1.digitaloceanspaces.com/hslu/YearCords.json"
+      // ).then((d) => {
+      //   setData(
+      //     d.data.filter(function (el) {
+      //       return (
+      //         el.AccidentYear === "2013" &&
+      //         el.RoadType_de === "Nebenstrasse" &&
+      //         el.CantonCode === "AG"
+      //       );
+      //     })
+      //   );
+
+      // });
+      // return () => undefined;
+    }
+  }, [data]);
 
   return (
     <div style={{ width: "400px", height: "400px" }}>

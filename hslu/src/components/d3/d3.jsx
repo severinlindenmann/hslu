@@ -28,20 +28,20 @@ const D3HSLU = () => {
         <div style={{ overflow: "auto", maxWidth: "1200px" }}>
           {loading && <LinearProgress />}
           {!loading && <AntTable data={data} passChildData={setChildData} />}
-          {console.log(childData)}
+          {/* {console.log(childData)} */}
         </div>
       </Paper>
       <Paper style={{ marginBottom: "20px" }}>
-        <Diagramm1 />
+        <Diagramm1 data={childData} />
       </Paper>
       <Paper style={{ marginBottom: "20px" }}>
-        <Diagramm2 />
+        <Diagramm2 data={childData} />
       </Paper>
       <Paper style={{ marginBottom: "20px" }}>
-        <Diagramm3 />
+        <Diagramm3 data={childData} />
       </Paper>
       <Paper style={{ marginBottom: "20px" }}>
-        <Diagramm4 />
+        <Diagramm4 data={childData} />
       </Paper>
     </>
   );
