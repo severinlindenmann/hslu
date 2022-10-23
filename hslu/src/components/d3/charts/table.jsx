@@ -1,49 +1,50 @@
 import React from "react";
-import "antd/dist/antd.css";
+// import "antd/dist/antd.css";
+import "antd/dist/antd.min.css";
 import { Table } from "antd";
 
 const columns = [
   {
     title: "Index",
     dataIndex: "index",
-    filters: [
-      {
-        text: "Joe",
-        value: "Joe",
-      },
-      {
-        text: "Category 1",
-        value: "Category 1",
-        children: [
-          {
-            text: "Yellow",
-            value: "Yellow",
-          },
-          {
-            text: "Pink",
-            value: "Pink",
-          },
-        ],
-      },
-      {
-        text: "Category 2",
-        value: "Category 2",
-        children: [
-          {
-            text: "Green",
-            value: "Green",
-          },
-          {
-            text: "Black",
-            value: "Black",
-          },
-        ],
-      },
-    ],
+    // filters: [
+    //   {
+    //     text: "Joe",
+    //     value: "Joe",
+    //   },
+    //   {
+    //     text: "Category 1",
+    //     value: "Category 1",
+    //     children: [
+    //       {
+    //         text: "Yellow",
+    //         value: "Yellow",
+    //       },
+    //       {
+    //         text: "Pink",
+    //         value: "Pink",
+    //       },
+    //     ],
+    //   },
+    //   {
+    //     text: "Category 2",
+    //     value: "Category 2",
+    //     children: [
+    //       {
+    //         text: "Green",
+    //         value: "Green",
+    //       },
+    //       {
+    //         text: "Black",
+    //         value: "Black",
+    //       },
+    //     ],
+    //   },
+    // ],
     // filterMode: "tree",
     // filterSearch: true,
     // onFilter: (value, record) => record.name.includes(value),
-    width: "30%",
+    // width: "30%",
   },
   // {
   //   title: "Age",
@@ -62,48 +63,139 @@ const columns = [
         text: "2014",
         value: "2014",
       },
+      {
+        text: "2015",
+        value: "2015",
+      },
+      {
+        text: "2016",
+        value: "2016",
+      },
+      {
+        text: "2017",
+        value: "2017",
+      },
+      {
+        text: "2018",
+        value: "2018",
+      },
+      {
+        text: "2019",
+        value: "2019",
+      },
+      {
+        text: "2020",
+        value: "2020",
+      },
+      {
+        text: "2021",
+        value: "2021",
+      },
     ],
     onFilter: (value, record) => record.AccidentYear.startsWith(value),
     filterSearch: true,
-    width: "40%",
+    // width: "40%",
+  },
+  {
+    title: "AccidentMonth",
+    dataIndex: "AccidentMonth",
+  },
+  {
+    title: "AccidentHour",
+    dataIndex: "AccidentHour",
+  },
+  {
+    title: "AccidentWeekDay_en",
+    dataIndex: "AccidentWeekDay_en",
+  },
+  {
+    title: "AccidentType_de",
+    dataIndex: "AccidentType_de",
+  },
+  {
+    title: "AccidentSeverityCategory_de",
+    dataIndex: "AccidentSeverityCategory_de",
+  },
+  {
+    title: "AccidentInvolvingPedestrian",
+    dataIndex: "AccidentInvolvingPedestrian",
+    filters: [
+      {
+        text: "true",
+        value: "true",
+      },
+      {
+        text: "false",
+        value: "false",
+      },
+    ],
+    onFilter: (value, record) =>
+      record.AccidentInvolvingPedestrian.startsWith(value),
+    filterSearch: true,
+  },
+  {
+    title: "AccidentInvolvingBicycle",
+    dataIndex: "AccidentInvolvingBicycle",
+    filters: [
+      {
+        text: "true",
+        value: "true",
+      },
+      {
+        text: "false",
+        value: "false",
+      },
+    ],
+    onFilter: (value, record) =>
+      record.AccidentInvolvingBicycle.startsWith(value),
+    filterSearch: true,
+  },
+  {
+    title: "AccidentInvolvingMotorcycle",
+    dataIndex: "AccidentInvolvingMotorcycle",
+    filters: [
+      {
+        text: "true",
+        value: "true",
+      },
+      {
+        text: "false",
+        value: "false",
+      },
+    ],
+    onFilter: (value, record) =>
+      record.AccidentInvolvingMotorcycle.startsWith(value),
+    filterSearch: true,
+  },
+  {
+    title: "RoadType_de",
+    dataIndex: "RoadType_de",
+  },
+  {
+    title: "CantonCode",
+    dataIndex: "CantonCode",
+  },
+  {
+    title: "MunicipalityCode",
+    dataIndex: "MunicipalityCode",
   },
 ];
 
-// const data = [
-//   {
-//     key: "1",
-//     name: "John Brown",
-//     age: 32,
-//     address: "New York No. 1 Lake Park",
-//   },
-//   {
-//     key: "2",
-//     name: "Jim Green",
-//     age: 42,
-//     address: "London No. 1 Lake Park",
-//   },
-//   {
-//     key: "3",
-//     name: "Joe Black",
-//     age: 32,
-//     address: "Sidney No. 1 Lake Park",
-//   },
-//   {
-//     key: "4",
-//     name: "Jim Red",
-//     age: 32,
-//     address: "London No. 2 Lake Park",
-//   },
-// ];
-
-const onChange = (pagination, filters, sorter, extra) => {
-  console.log("params", pagination, filters, sorter, extra);
-};
+// const onChange = (props, pagination, filters, sorter, extra) => {
+//   extra;
+//   console.log("params", pagination, filters, sorter, extra);
+// };
 
 const AntTable = (props) => (
   <>
-    {console.log(props.data)}
-    <Table columns={columns} dataSource={props.data} onChange={onChange} />
+    <Table
+      size="small"
+      columns={columns}
+      dataSource={props.data}
+      onChange={(pagination, filters, sorter, extra) => {
+        props.passChildData(extra);
+      }}
+    />
   </>
 );
 

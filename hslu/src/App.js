@@ -2,7 +2,7 @@ import "./App.css";
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import DashboardContent from "./components/dashboard/Dashboard";
-import Playground from "./components/d3/d3";
+import D3HSLU from "./components/d3/d3";
 
 class App extends React.Component {
   render() {
@@ -11,7 +11,7 @@ class App extends React.Component {
         <Routes>
           <Route path="/" element={<DashboardContent />} />
 
-          <Route path="/d3" element={<Playground />} />
+          <Route path="/d3" element={<D3HSLU />} />
         </Routes>
       </BrowserRouter>
     );

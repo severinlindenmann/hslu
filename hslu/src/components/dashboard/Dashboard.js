@@ -21,12 +21,8 @@ import { mainListItems } from "./listItems";
 // import Chart from "./Chart";
 // import Deposits from "./Deposits";
 // import Orders from "./Orders";
-// import TestDiagramm from "../d3/testDiagramm";
-import Diagramm3 from "../d3/diagramm3";
-import Diagramm2 from "../d3/diagramm2";
-import Diagramm1 from "../d3/diagramm1";
-import Diagramm4 from "../d3/diagramm4";
-// import Svg from "../d3/diagramm3";
+
+import D3HSLU from "../d3/d3";
 
 function Copyright(props) {
   return (
@@ -171,66 +167,8 @@ function DashboardContent() {
           }}
         >
           <Toolbar />
-          <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-            <Grid container spacing={3}>
-              <Grid item xs={12} md={10} lg={9}>
-                <Paper
-                  sx={{
-                    p: 2,
-                    display: "flex",
-                    flexDirection: "column",
-                    // height: 240,
-                  }}
-                >
-                  <Diagramm1 />
-                </Paper>
-              </Grid>
-              {/* Chart */}
-              <Grid item xs={12} md={10} lg={9}>
-                <Paper
-                  sx={{
-                    p: 2,
-                    display: "flex",
-                    flexDirection: "column",
-                    // height: 240,
-                  }}
-                >
-                  <Diagramm3 />
-                  {/* <TestDiagramm width={500} height={500} /> */}
-                </Paper>
-              </Grid>
-              {/* Recent Deposits */}
-              <Grid item xs={12} md={10} lg={9}>
-                <Paper
-                  sx={{
-                    p: 2,
-                    display: "flex",
-                    flexDirection: "column",
-                    // height: 240,
-                  }}
-                >
-                  <Diagramm2 />
-                </Paper>
-              </Grid>
-              <Grid item xs={12} md={10} lg={9}>
-                <Paper
-                  sx={{
-                    p: 2,
-                    display: "flex",
-                    flexDirection: "column",
-                    // height: 240,
-                  }}
-                >
-                  <Diagramm4 />
-                </Paper>
-              </Grid>
-              {/* Recent Orders */}
-              {/* <Grid item xs={12}>
-                <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
-                  <Orders />
-                </Paper>
-              </Grid> */}
-            </Grid>
+          <Container maxWidth="lg" sx={{ mt: 1, mb: 0 }}>
+            <D3HSLU />
             <Copyright sx={{ pt: 4 }} />
           </Container>
         </Box>
