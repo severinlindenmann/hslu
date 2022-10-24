@@ -11,18 +11,24 @@ import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 // import Badge from "@mui/material/Badge";
 import Container from "@mui/material/Container";
-import Grid from "@mui/material/Grid";
-import Paper from "@mui/material/Paper";
 import Link from "@mui/material/Link";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 // import NotificationsIcon from "@mui/icons-material/Notifications";
-import { mainListItems } from "./listItems";
 // import Chart from "./Chart";
 // import Deposits from "./Deposits";
 // import Orders from "./Orders";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import WelcomePage from "../../pages/welcome";
+import ListItemButton from "@mui/material/ListItemButton";
+import MapIcon from "@mui/icons-material/Map";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
 
-import D3HSLU from "../d3/d3";
+import BarChartIcon from "@mui/icons-material/BarChart";
+import HomeIcon from "@mui/icons-material/Home";
+import ScooterPage from "../../pages/scooters";
+import D3HSLU from "../../pages/d3";
 
 function Copyright(props) {
   return (
@@ -149,9 +155,25 @@ function DashboardContent() {
           </Toolbar>
           <Divider />
           <List component="nav">
-            {mainListItems}
-            {/* <Divider sx={{ my: 1 }} /> */}
-            {/* {secondaryListItems} */}
+            <ListItemButton component={Link} to="/">
+              <ListItemIcon>
+                <HomeIcon />
+              </ListItemIcon>
+              <ListItemText primary="Home"></ListItemText>
+            </ListItemButton>
+            <ListItemButton component={Link} to="/gis">
+              <ListItemIcon>
+                <BarChartIcon />
+              </ListItemIcon>
+              <ListItemText primary="W.MDSE_VSGIS05"></ListItemText>
+            </ListItemButton>
+
+            <ListItemButton component={Link} to="/scooters">
+              <ListItemIcon>
+                <MapIcon />
+              </ListItemIcon>
+              <ListItemText primary="W.MDSE_ABDSC31" />
+            </ListItemButton>
           </List>
         </Drawer>
         <Box
@@ -168,7 +190,13 @@ function DashboardContent() {
         >
           <Toolbar />
           <Container maxWidth="lg" sx={{ mt: 1, mb: 0 }}>
-            <D3HSLU />
+            <BrowserRouter>
+              <Routes>
+                <Route path="/" element={<WelcomePage />} />
+                <Route path="/gis" element={<D3HSLU />} />
+                <Route path="/scooters" element={<ScooterPage />} />
+              </Routes>
+            </BrowserRouter>
             <Copyright sx={{ pt: 4 }} />
           </Container>
         </Box>

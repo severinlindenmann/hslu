@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import AntTable from "./charts/table.jsx";
+import AntTable from "../components/d3/charts/table.jsx";
 import { json } from "d3";
 import { Paper, LinearProgress } from "@mui/material";
-import Diagramm3 from "../d3/diagramm3";
-import Diagramm1 from "../d3/diagramm1";
-import Diagramm4 from "../d3/diagramm4";
-import Diagramm5 from "../d3/diagramm5";
+import Diagramm3 from "../components/d3/diagramm3";
+import Diagramm1 from "../components/d3/diagramm1";
+import Diagramm4 from "../components/d3/diagramm4";
+import Diagramm5 from "../components/d3/diagramm5";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 
