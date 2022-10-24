@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import * as d3 from "d3";
 import Heatmap from "./charts/heatmap";
-
+import LinearProgress from "@mui/material/LinearProgress";
 function Diagramm2(props) {
   const [data, setData] = useState([]);
   const [group, setGroup] = useState([]);
@@ -40,7 +40,7 @@ function Diagramm2(props) {
 
   return (
     <div>
-      {loading && <div>loading</div>}
+      {loading && <LinearProgress />}
       {!loading && (
         <Heatmap
           width={450}

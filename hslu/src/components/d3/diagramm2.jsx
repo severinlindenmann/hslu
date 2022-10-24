@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import * as d3 from "d3";
 import BarChart from "./charts/barchart";
-
+import LinearProgress from "@mui/material/LinearProgress";
 function Diagramm2() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -18,7 +18,7 @@ function Diagramm2() {
 
   return (
     <div>
-      {loading && <div>loading</div>}
+      {loading && <LinearProgress />}
       {!loading && <BarChart width={600} height={500} data={data} />}
     </div>
   );

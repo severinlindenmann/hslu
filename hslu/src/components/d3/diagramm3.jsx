@@ -6,14 +6,10 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 
-var margin = { top: 5, right: 0, bottom: 0, left: 0 },
-  width = 460 - margin.left - margin.right,
-  height = 400 - margin.top - margin.bottom;
-
 const url =
   "https://severin.fra1.digitaloceanspaces.com/hslu/YearMonthCount.json";
 
-const Diagramm3 = () => {
+const Diagramm3 = (props) => {
   const [rawData, setRawData] = useState([]);
   const [data, setData] = useState([]);
   const [year, setYear] = useState("");
@@ -21,9 +17,6 @@ const Diagramm3 = () => {
 
   const createDiagramm = (data) => {
     const svg = d3.select(ref.current);
-    //   .append("svg")
-    //   .attr("width", "500")
-    //   .attr("height", "500");
 
     var margin = 100,
       width = svg.attr("width") - margin,
@@ -88,11 +81,6 @@ const Diagramm3 = () => {
     setYear(event.target.value);
     setData(rawData[event.target.value]);
     createDiagramm(data);
-    // getS3Data(url).then((d) => {
-    //   // let svg = d3.select("svg").remove();
-    //   // svg.selectAll("*").remove();
-
-    // });
   };
   useEffect(() => {
     getS3Data(url).then((d) => {
@@ -105,7 +93,7 @@ const Diagramm3 = () => {
 
   return (
     <>
-      <h2>{year}</h2>
+      <h2 style={{ textAlign: "center", paddingTop: "10px" }}>{year}</h2>
       <svg width="500" height="500" ref={ref}></svg>
       <FormControl fullWidth>
         <InputLabel id="demo-simple-select-label">Year</InputLabel>

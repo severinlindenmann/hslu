@@ -3,10 +3,13 @@ import AntTable from "./charts/table.jsx";
 import { json } from "d3";
 import { Paper, LinearProgress } from "@mui/material";
 import Diagramm3 from "../d3/diagramm3";
-import Diagramm2 from "../d3/diagramm2";
 import Diagramm1 from "../d3/diagramm1";
 import Diagramm4 from "../d3/diagramm4";
 import Diagramm5 from "../d3/diagramm5";
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
+
+import Chip from "@mui/material/Chip";
 
 const D3HSLU = () => {
   const [data, setData] = useState([]);
@@ -29,53 +32,134 @@ const D3HSLU = () => {
         style={{ marginBottom: "20px", padding: "20px", textAlign: "center" }}
       >
         <h1>W.MDSE_VSGIS05</h1>
-        <p>HSLU Projekt zur Datenauswertung von Unfalldaten der Schweiz</p>
-        <p>
+        <span>
+          HSLU Projekt zur Datenauswertung von Unfalldaten der Schweiz
+        </span>
+        <br />
+
+        <br />
+        <span>
           Die Darstellung der Webseite funktioniert am besten mit einer
           Auflösung von &lt;1600x1200 und braucht für Clientside Berechnungen
           eine gewisse Rechnerleistung.
-        </p>
+        </span>
       </Paper>
-      <Paper
-        style={{ marginBottom: "20px", padding: "20px", textAlign: "center" }}
-      >
-        <h1>Tabelle</h1>
-        <p>
-          In der Tabelle kann gefiltert werden, gemäss dem Filter werden dann
-          die Diagramm-Daten generiert.
-        </p>
-      </Paper>
-      <Paper style={{ marginBottom: "20px" }}>
-        <div style={{ overflow: "auto", maxWidth: "1200px" }}>
-          {loading && <LinearProgress />}
-          {!loading && <AntTable data={data} passChildData={setChildData} />}
-          {/* {console.log(childData)} */}
-        </div>
-      </Paper>
-      <Paper
-        style={{ marginBottom: "20px", padding: "20px", textAlign: "center" }}
-      >
-        <h1>Heatmap</h1>
-        <p>
-          Es werden die Anzahl Unfälle dargestellt.{" "}
-          <p>Dünklere Farbe = mehr Unfälle</p>
-        </p>
-      </Paper>
-      <Paper style={{ marginBottom: "20px" }}>
-        <Diagramm1 data={childData} />
-      </Paper>
-      <Paper style={{ marginBottom: "20px" }}>
-        <Diagramm5 data={childData} />
-      </Paper>
-      {/* <Paper style={{ marginBottom: "20px" }}>
-        <Diagramm2 data={childData} />
-      </Paper> */}
-      <Paper style={{ marginBottom: "20px" }}>
-        <Diagramm3 data={childData} />
-      </Paper>
-      <Paper style={{ marginBottom: "20px" }}>
-        <Diagramm4 data={childData} />
-      </Paper>
+      {loading ? (
+        <Paper
+          style={{ marginBottom: "20px", padding: "20px", textAlign: "center" }}
+        >
+          <Box sx={{ display: "flex", justifyContent: "center" }}>
+            <CircularProgress />
+          </Box>
+        </Paper>
+      ) : (
+        <>
+          <Paper
+            style={{
+              marginBottom: "20px",
+              padding: "20px",
+              textAlign: "center",
+            }}
+          >
+            <Chip label="Facts & Figures" />
+
+            <table
+              style={{
+                marginLeft: "auto",
+                marginRight: "auto",
+                marginTop: "10px",
+              }}
+            >
+              <tbody>
+                <tr>
+                  <td>AccidentYear (2011-2022):</td>
+                  <td>
+                    {[...new Set(data.map((d) => d.AccidentYear))].length}
+                  </td>
+                </tr>
+                <tr>
+                  <td>AccidentType_de:</td>
+                  <td>
+                    {[...new Set(data.map((d) => d.AccidentType_de))].length}
+                  </td>
+                </tr>
+                <tr>
+                  <td>AccidentSeverityCategory_de:</td>
+                  <td>
+                    {
+                      [
+                        ...new Set(
+                          data.map((d) => d.AccidentSeverityCategory_de)
+                        ),
+                      ].length
+                    }
+                  </td>
+                </tr>
+                <tr>
+                  <td>RoadType_de:</td>
+                  <td>{[...new Set(data.map((d) => d.RoadType_de))].length}</td>
+                </tr>
+
+                <tr>
+                  <td>Datenquelle:</td>
+                  <td>
+                    <a href="https://opendata.swiss/dataset/strassenverkehrsunfalle-mit-personenschaden">
+                      Strassenverkehrsunfälle
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </Paper>
+          <Paper
+            style={{
+              marginBottom: "20px",
+              padding: "20px",
+              textAlign: "center",
+            }}
+          >
+            <h1>Tabelle</h1>
+            <span>
+              In der Tabelle kann gefiltert werden, gemäss dem Filter werden
+              dann die Diagramm-Daten generiert.
+            </span>
+          </Paper>
+          <Paper style={{ marginBottom: "20px" }}>
+            <div style={{ overflow: "auto", maxWidth: "1200px" }}>
+              {loading && <LinearProgress />}
+              {!loading && (
+                <AntTable data={data} passChildData={setChildData} />
+              )}
+            </div>
+          </Paper>
+          <Paper
+            style={{
+              marginBottom: "20px",
+              padding: "20px",
+              textAlign: "center",
+            }}
+          >
+            <h1>Heatmap</h1>
+            <span>
+              Es werden die Anzahl Unfälle dargestellt.
+              <br />
+              Dünklere Farbe = mehr Unfälle
+            </span>
+          </Paper>
+          <Paper style={{ marginBottom: "20px" }}>
+            <Diagramm1 data={childData} />
+          </Paper>
+          <Paper style={{ marginBottom: "20px" }}>
+            <Diagramm5 data={childData} />
+          </Paper>
+          <Paper style={{ marginBottom: "20px" }}>
+            <Diagramm3 data={childData} />
+          </Paper>
+          <Paper style={{ marginBottom: "20px" }}>
+            <Diagramm4 data={childData} />
+          </Paper>
+        </>
+      )}
     </>
   );
 };

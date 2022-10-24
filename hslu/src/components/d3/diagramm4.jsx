@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import LeafletMap from "./charts/map";
-
+import LinearProgress from "@mui/material/LinearProgress";
 function Diagramm4(props) {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -15,13 +15,13 @@ function Diagramm4(props) {
         setLoading(false);
       }
     }
-  }, [data]);
+  }, [data, props.data.currentDataSource]);
 
   return (
     <div style={{ width: "400px", height: "400px", padding: "20px" }}>
       {!toBig ? (
         <>
-          {loading && <div>Map is loading...</div>}
+          {loading && <LinearProgress />}
           {!loading && <LeafletMap data={data} />}
         </>
       ) : (
