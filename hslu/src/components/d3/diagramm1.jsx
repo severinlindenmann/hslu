@@ -36,18 +36,6 @@ function Diagramm2(props) {
 
       setLoading(false);
     }
-    // d3.json(
-    //   "https://severin.fra1.digitaloceanspaces.com/hslu/UnfallTypKantonYear.json"
-    // ).then((d) => {
-    //   setGroup([...new Set(d.data.map((item) => item.group))]);
-    //   setVariable([...new Set(d.data.map((item) => item.variable))]);
-    //   setData(d.data);
-    //   setLoading(false);
-    // });
-    // console.log(data);
-    // console.log(variable);
-    // console.log(group);
-    // return () => undefined;
   }, [props.data.currentDataSource]);
 
   return (

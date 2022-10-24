@@ -153,7 +153,90 @@ const columns = [
         text: "BL",
         value: "BL",
       },
-      // AG AI AR BE BL BS FR GE GL GR JU LU NE NW OW SG SH SO SZ TG TI UR VD VS ZG ZH
+      {
+        text: "BS",
+        value: "BS",
+      },
+      {
+        text: "FR",
+        value: "FR",
+      },
+      {
+        text: "GE",
+        value: "GE",
+      },
+      {
+        text: "GL",
+        value: "GL",
+      },
+      {
+        text: "GR",
+        value: "GR",
+      },
+      {
+        text: "JU",
+        value: "JU",
+      },
+      {
+        text: "LU",
+        value: "LU",
+      },
+      {
+        text: "NE",
+        value: "NE",
+      },
+      {
+        text: "NW",
+        value: "NW",
+      },
+      {
+        text: "OW",
+        value: "OW",
+      },
+      {
+        text: "SG",
+        value: "SG",
+      },
+      {
+        text: "SH",
+        value: "SH",
+      },
+      {
+        text: "SO",
+        value: "SO",
+      },
+      {
+        text: "SZ",
+        value: "SZ",
+      },
+      {
+        text: "TG",
+        value: "TG",
+      },
+      {
+        text: "TI",
+        value: "TI",
+      },
+      {
+        text: "UR",
+        value: "UR",
+      },
+      {
+        text: "VD",
+        value: "VD",
+      },
+      {
+        text: "VS",
+        value: "VS",
+      },
+      {
+        text: "ZG",
+        value: "ZG",
+      },
+      {
+        text: "ZH",
+        value: "ZH",
+      },
     ],
     onFilter: (value, record) => record.CantonCode.startsWith(value),
     filterSearch: true,
@@ -170,16 +253,15 @@ const columns = [
 // };
 
 const AntTable = (props) => (
-  <>
-    <Table
-      size="small"
-      columns={columns}
-      dataSource={props.data}
-      onChange={(pagination, filters, sorter, extra) => {
-        props.passChildData(extra);
-      }}
-    />
-  </>
+  <Table
+    size="small"
+    columns={columns}
+    rowKey="index"
+    dataSource={props.data}
+    onChange={(pagination, filters, sorter, extra) => {
+      props.passChildData(extra);
+    }}
+  />
 );
 
 export default AntTable;
