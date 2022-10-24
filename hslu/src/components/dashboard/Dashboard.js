@@ -24,11 +24,13 @@ import ListItemButton from "@mui/material/ListItemButton";
 import MapIcon from "@mui/icons-material/Map";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-
+import SchoolIcon from "@mui/icons-material/School";
 import BarChartIcon from "@mui/icons-material/BarChart";
 import HomeIcon from "@mui/icons-material/Home";
 import ScooterPage from "../../pages/scooters";
 import D3HSLU from "../../pages/d3";
+import RestaurantMenuIcon from "@mui/icons-material/RestaurantMenu";
+import ExpandCircleDownIcon from "@mui/icons-material/ExpandCircleDown";
 
 function Copyright(props) {
   return (
@@ -161,6 +163,16 @@ function DashboardContent() {
               </ListItemIcon>
               <ListItemText primary="Home"></ListItemText>
             </ListItemButton>
+            <Divider />
+            <ListItemButton style={{ backgroundColor: "#dcdedc" }}>
+              <ListItemIcon>
+                <SchoolIcon />
+              </ListItemIcon>
+              <ListItemText
+                primaryTypographyProps={{ fontWeight: "bold" }}
+                primary="Hochschule Luzern"
+              ></ListItemText>
+            </ListItemButton>
             <ListItemButton component={Link} to="/gis">
               <ListItemIcon>
                 <BarChartIcon />
@@ -173,6 +185,22 @@ function DashboardContent() {
                 <MapIcon />
               </ListItemIcon>
               <ListItemText primary="W.MDSE_ABDSC31" />
+            </ListItemButton>
+            <Divider />
+            <ListItemButton style={{ backgroundColor: "#dcdedc" }}>
+              <ListItemIcon>
+                <ExpandCircleDownIcon />
+              </ListItemIcon>
+              <ListItemText
+                primaryTypographyProps={{ fontWeight: "bold" }}
+                primary="Private Projects"
+              ></ListItemText>
+            </ListItemButton>
+            <ListItemButton component={Link} to="https://wuchemenu.ch">
+              <ListItemIcon>
+                <RestaurantMenuIcon />
+              </ListItemIcon>
+              <ListItemText primary="Wuchemenu.ch"></ListItemText>
             </ListItemButton>
           </List>
         </Drawer>
