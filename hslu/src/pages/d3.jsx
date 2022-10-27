@@ -10,6 +10,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 
 import Chip from "@mui/material/Chip";
+import Diagramm6 from "../components/d3/diagramm6.jsx";
 
 const D3HSLU = () => {
   const [data, setData] = useState([]);
@@ -40,7 +41,7 @@ const D3HSLU = () => {
         <br />
         <span>
           Die Darstellung der Webseite funktioniert am besten mit einer
-          Auflösung von &lt;1600x1200 und braucht für Clientside Berechnungen
+          Auflösung von &lt;1600x1080 und braucht für Clientside Berechnungen
           eine gewisse Rechnerleistung.
         </span>
       </Paper>
@@ -154,6 +155,9 @@ const D3HSLU = () => {
           </Paper>
           <Paper style={{ marginBottom: "20px" }}>
             <Diagramm3 data={childData} />
+          </Paper>
+          <Paper style={{ marginBottom: "20px" }}>
+            <Diagramm6 data={childData} />
           </Paper>
           <Paper style={{ marginBottom: "20px" }}>
             <Diagramm4 data={childData} />

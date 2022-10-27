@@ -31,6 +31,8 @@ import ScooterPage from "../../pages/scooters";
 import D3HSLU from "../../pages/d3";
 import RestaurantMenuIcon from "@mui/icons-material/RestaurantMenu";
 import ExpandCircleDownIcon from "@mui/icons-material/ExpandCircleDown";
+import TestPage from "../../pages/testPage";
+import BugReportIcon from "@mui/icons-material/BugReport";
 
 function Copyright(props) {
   return (
@@ -186,6 +188,12 @@ function DashboardContent() {
               </ListItemIcon>
               <ListItemText primary="W.MDSE_ABDSC31" />
             </ListItemButton>
+            <ListItemButton component={Link} to="/testpage">
+              <ListItemIcon>
+                <BugReportIcon />
+              </ListItemIcon>
+              <ListItemText primary="Testpage" />
+            </ListItemButton>
             <Divider />
             <ListItemButton style={{ backgroundColor: "#dcdedc" }}>
               <ListItemIcon>
@@ -223,6 +231,7 @@ function DashboardContent() {
                 <Route path="/" element={<WelcomePage />} />
                 <Route path="/gis" element={<D3HSLU />} />
                 <Route path="/scooters" element={<ScooterPage />} />
+                <Route path="/testpage" element={<TestPage />} />
               </Routes>
             </BrowserRouter>
             <Copyright sx={{ pt: 4 }} />
