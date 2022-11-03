@@ -1,8 +1,8 @@
 import * as d3 from "d3";
 import React, { useRef, useEffect } from "react";
 
-var margin = { top: 0, right: 30, bottom: 40, left: 90 },
-  width = 500 - margin.left - margin.right,
+var margin = { top: 0, right: 0, bottom: 0, left: 0 },
+  width = 400 - margin.left - margin.right,
   height = 350 - margin.top - margin.bottom;
 
 function BarPlot({ data }) {
@@ -14,7 +14,7 @@ function BarPlot({ data }) {
       .attr("width", width + 200)
       .attr("height", height + 100)
       //   .append("g")
-      .attr("transform", `translate(${250},${50})`);
+      .attr("transform", `translate(${20},${50})`);
     //   .style("border", "1px solid black");
   }, []);
 
@@ -25,6 +25,14 @@ function BarPlot({ data }) {
 
   const draw = () => {
     const svg = d3.select(ref.current);
+    if (data.length > 0) {
+      svg.attr(
+        "transform",
+        `translate(${
+          (Math.max(...data.map((d) => d.name.length)) + 5) * 6
+        },${50})`
+      );
+    }
 
     // Add X axis
     var x = d3

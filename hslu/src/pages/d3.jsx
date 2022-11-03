@@ -21,6 +21,7 @@ const D3HSLU = () => {
     json("https://severin.fra1.digitaloceanspaces.com/hslu/AllData.json").then(
       (d) => {
         setData(d.data);
+        setChildData({ currentDataSource: d.data });
         setLoading(false);
       }
     );
@@ -49,6 +50,7 @@ const D3HSLU = () => {
         <Paper
           style={{ marginBottom: "20px", padding: "20px", textAlign: "center" }}
         >
+          <h2>Loading Data, please wait...</h2>
           <Box sx={{ display: "flex", justifyContent: "center" }}>
             <CircularProgress />
           </Box>
@@ -150,18 +152,39 @@ const D3HSLU = () => {
           <Paper style={{ marginBottom: "20px" }}>
             <Diagramm1 data={childData} />
           </Paper>
+          <Paper
+            style={{
+              marginBottom: "20px",
+              padding: "20px",
+              textAlign: "center",
+            }}
+          >
+            <h1>Linien Diagramm</h1>
+            <span>Wähle deine eigene Werte für die Y-Achse aus</span>
+          </Paper>
           <Paper style={{ marginBottom: "20px" }}>
             <Diagramm5 data={childData} />
           </Paper>
-          <Paper style={{ marginBottom: "20px" }}>
-            <Diagramm3 data={childData} />
+          <Paper
+            style={{
+              marginBottom: "20px",
+              padding: "20px",
+              textAlign: "center",
+            }}
+          >
+            <h1>Map</h1>
+            <span>Erstellt Cluster mit der Anzahl an Unfällen</span>
           </Paper>
           <Paper style={{ marginBottom: "20px" }}>
             <Diagramm6 data={childData} />
           </Paper>
-          <Paper style={{ marginBottom: "20px" }}>
+          {/* <Paper style={{ marginBottom: "20px" }}>
+            <Diagramm3 data={childData} />
+          </Paper> */}
+
+          {/* <Paper style={{ marginBottom: "20px" }}>
             <Diagramm4 data={childData} />
-          </Paper>
+          </Paper> */}
         </>
       )}
     </>

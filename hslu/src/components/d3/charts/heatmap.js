@@ -6,6 +6,7 @@ function Heatmap({ width, height, data, group, variable }) {
 
   const myGroups = group;
   const myVars = variable;
+
   useEffect(() => {
     const svg = d3
       .select(ref.current)
@@ -13,11 +14,13 @@ function Heatmap({ width, height, data, group, variable }) {
       .attr("height", height + 100)
       //   .append("g")
       .attr("transform", `translate(${50},${50})`);
+
     //   .style("border", "1px solid black");
   }, []);
 
   useEffect(() => {
     d3.select(ref.current).selectAll("*").remove();
+
     draw();
   }, [data, group, variable]);
 
