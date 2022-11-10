@@ -22,6 +22,7 @@ const D3HSLU = () => {
       (d) => {
         setData(d.data);
         setChildData({ currentDataSource: d.data });
+
         setLoading(false);
       }
     );
@@ -174,6 +175,11 @@ const D3HSLU = () => {
           >
             <h1>Map</h1>
             <span>Erstellt Cluster mit der Anzahl an Unfällen</span>
+            <br />
+            <span>
+              Zeigt nur die ersten 10'000 Punkte wegen Performance-Problemen, am
+              besten genauer Filtern mit der Tabelle oben
+            </span>
           </Paper>
           <Paper style={{ marginBottom: "20px" }}>
             <Diagramm6 data={childData} />

@@ -45,3 +45,26 @@
   height: 100%;
   width: 100%;
 }
+
+.gemeinden {
+  stroke: #bfbfbf;
+  stroke-width: 0.25;
+  fill: none;
+}
+
+.kantone {
+  stroke: white;
+  fill: none;
+}
+
+#popoverText {
+  position: absolute;
+  text-align: center;
+  padding: 2px;
+  font: 12px sans-serif;
+  background: #fff;
+  border: 0px;
+  border-radius: 8px;
+  pointer-events: none;
+  opacity: 0;
+}
