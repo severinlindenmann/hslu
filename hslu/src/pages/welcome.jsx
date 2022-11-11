@@ -14,6 +14,8 @@ const WelcomePage = () => {
       <StyledPaper>
         <h1>Welcome Page</h1>
         <p>You can use the menu left to check out some projects</p>
+        <p>You can find this project on github</p>
+        <a href="https://github.com/swisscenturion/hslu">Github</a>
       </StyledPaper>
       <Alert severity="info">
         most of the sides are not mobil optimized, try to check it out on a
