@@ -33,6 +33,7 @@ import RestaurantMenuIcon from "@mui/icons-material/RestaurantMenu";
 import ExpandCircleDownIcon from "@mui/icons-material/ExpandCircleDown";
 import TestPage from "../../pages/testPage";
 import BugReportIcon from "@mui/icons-material/BugReport";
+import HSLUGIS from "../../pages/dvis";
 
 function Copyright(props) {
   return (
@@ -52,7 +53,7 @@ function Copyright(props) {
   );
 }
 
-const drawerWidth = 240;
+const drawerWidth = 260;
 
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== "open",
@@ -175,7 +176,15 @@ function DashboardContent() {
                 primary="Hochschule Luzern"
               ></ListItemText>
             </ListItemButton>
+
             <ListItemButton component={Link} to="/gis">
+              <ListItemIcon>
+                <BarChartIcon />
+              </ListItemIcon>
+              <ListItemText primary="W.MDSE_VSGIS05 (D3)"></ListItemText>
+            </ListItemButton>
+
+            <ListItemButton component={Link} to="/gis2">
               <ListItemIcon>
                 <BarChartIcon />
               </ListItemIcon>
@@ -230,6 +239,7 @@ function DashboardContent() {
               <Routes>
                 <Route path="/" element={<WelcomePage />} />
                 <Route path="/gis" element={<D3HSLU />} />
+                <Route path="/gis2" element={<HSLUGIS />} />
                 <Route path="/scooters" element={<ScooterPage />} />
                 <Route path="/testpage" element={<TestPage />} />
               </Routes>
