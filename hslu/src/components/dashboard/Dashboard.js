@@ -34,6 +34,7 @@ import ExpandCircleDownIcon from "@mui/icons-material/ExpandCircleDown";
 import TestPage from "../../pages/testPage";
 import BugReportIcon from "@mui/icons-material/BugReport";
 import HSLUGIS from "../../pages/dvis";
+import BadgeIcon from "@mui/icons-material/Badge";
 
 function Copyright(props) {
   return (
@@ -218,6 +219,12 @@ function DashboardContent() {
                 <RestaurantMenuIcon />
               </ListItemIcon>
               <ListItemText primary="Wuchemenu.ch"></ListItemText>
+            </ListItemButton>
+            <ListItemButton component={Link} to="https://severin.io">
+              <ListItemIcon>
+                <BadgeIcon />
+              </ListItemIcon>
+              <ListItemText primary="About me"></ListItemText>
             </ListItemButton>
           </List>
         </Drawer>
