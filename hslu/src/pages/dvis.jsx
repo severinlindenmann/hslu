@@ -8,13 +8,16 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import Chip from "@mui/material/Chip";
-import { Line, G2, Pie } from "@ant-design/plots";
+import { Line, G2, Pie, Column, Heatmap } from "@ant-design/plots";
+import _ from "lodash";
 
 const HSLUGIS = () => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   const [configDiagramm1, setConfigDiagramm1] = useState([]);
   const [configDiagramm2, setConfigDiagramm2] = useState([]);
+  const [configDiagramm3, setConfigDiagramm3] = useState([]);
+  const [configDiagramm4, setConfigDiagramm4] = useState([]);
   const [year, setYear] = useState("alle");
   const [years, setYears] = useState([]);
   const G = G2.getEngine("canvas");
@@ -158,6 +161,53 @@ const HSLUGIS = () => {
         },
       ],
     });
+
+    function addItemCounts(items, groupByKeys) {
+      var groups = _.groupBy(items, (obj) => {
+        return groupByKeys.map((key) => obj[key]).join("-");
+      });
+
+      return _.map(groups, (g) => ({
+        ...g[0],
+        count: g.length,
+      }));
+    }
+
+    setConfigDiagramm3({
+      data: addItemCounts(currentData, [
+        "AccidentWeekDay_en",
+        "AccidentType_de",
+      ]),
+      isStack: true,
+      xField: "AccidentWeekDay_en",
+      yField: "count",
+      seriesField: "AccidentType_de",
+      autofit: true,
+      // label: {
+      //   position: "left",
+
+      //   layout: [
+      //     {
+      //       type: "interval-adjust-position",
+      //     },
+      //     {
+      //       type: "interval-hide-overlap",
+      //     },
+      //     {
+      //       type: "adjust-color",
+      //     },
+      //   ],
+      // },
+    });
+
+    setConfigDiagramm4({
+      autoFit: true,
+      data: addItemCounts(currentData, ["AccidentWeekDay_en", "AccidentHour"]),
+      xField: "AccidentWeekDay_en",
+      yField: "AccidentHour",
+      colorField: "count",
+      color: ["#174c83", "#7eb6d4", "#efefeb", "#efa759", "#9b4d16"],
+    });
   };
 
   const handleChange = (event) => {
@@ -286,7 +336,7 @@ const HSLUGIS = () => {
               textAlign: "center",
             }}
           >
-            <h1>Diagramm 1</h1>
+            <h1>Wähle das Jahr aus</h1>
             <Box>
               <FormControl>
                 <InputLabel>Year</InputLabel>
@@ -313,8 +363,15 @@ const HSLUGIS = () => {
           </Paper>
 
           <Paper style={{ marginBottom: "20px" }}>
-            {console.log(configDiagramm2)}
             <Pie style={{ padding: "20px" }} {...configDiagramm2} />
+          </Paper>
+
+          <Paper style={{ marginBottom: "20px" }}>
+            <Column style={{ padding: "20px" }} {...configDiagramm3} />
+          </Paper>
+
+          <Paper style={{ marginBottom: "20px" }}>
+            <Heatmap style={{ padding: "20px" }} {...configDiagramm4} />
           </Paper>
         </>
       )}

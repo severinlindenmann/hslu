@@ -158,7 +158,7 @@ const D3HSLU = () => {
               textAlign: "center",
             }}
           >
-            <h1>Linien Diagramm</h1>
+            <h1>Balkendiagramm</h1>
             <span>Wähle deine eigene Werte für die Y-Achse aus</span>
           </Paper>
           <Paper style={{ marginBottom: "20px" }}>
