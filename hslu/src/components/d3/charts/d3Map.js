@@ -1,7 +1,8 @@
 import React, { useRef, useEffect, useState } from "react";
 import * as d3 from "d3";
+import Chip from "@mui/material/Chip";
 
-function D3Map({ data, kantone, gemeinden }) {
+function D3Map({ data, kantone, gemeinden, parameter, colors }) {
   const ref = useRef();
 
   useEffect(() => {
@@ -49,13 +50,19 @@ function D3Map({ data, kantone, gemeinden }) {
       .style("stroke", "black")
       .style("opacity", 0.3);
 
+    const getColor = (p, v) => {
+      return colors[v];
+    };
+
     svg
       .selectAll(".pin")
       .data(data.data.currentDataSource.slice(0, 10000))
       .enter()
       .append("circle", ".pin")
       .attr("r", 1)
-      .style("fill", "red")
+      .style("fill", function (d) {
+        return getColor(parameter, d[parameter]);
+      })
       .attr("transform", function (d) {
         return (
           "translate(" + projection([d.x_coordinates, d.y_coordinates]) + ")"
@@ -66,6 +73,16 @@ function D3Map({ data, kantone, gemeinden }) {
   return (
     <div style={{ padding: "10px" }}>
       <svg ref={ref}></svg>
+
+      <div>
+        {Object.keys(colors).map((keyName, i) => (
+          <Chip
+            label={keyName}
+            style={{ backgroundColor: colors[keyName] }}
+            key={i}
+          />
+        ))}
+      </div>
     </div>
   );
 }
