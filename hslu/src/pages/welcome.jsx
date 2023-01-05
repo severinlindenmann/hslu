@@ -18,7 +18,7 @@ const WelcomePage = () => {
         <a href="https://github.com/swisscenturion/hslu">Github</a>
       </StyledPaper>
       <Alert severity="info">
-        most of the sides are not mobil optimized, try to check it out on a
+        most of the sites are not mobil optimized, try to check it out on a
         bigger screen
       </Alert>
     </>
