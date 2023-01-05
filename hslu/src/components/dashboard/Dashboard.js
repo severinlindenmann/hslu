@@ -198,12 +198,12 @@ function DashboardContent() {
               </ListItemIcon>
               <ListItemText primary="W.MDSE_ABDSC31" />
             </ListItemButton>
-            <ListItemButton component={Link} to="/testpage">
+            {/* <ListItemButton component={Link} to="/testpage">
               <ListItemIcon>
                 <BugReportIcon />
               </ListItemIcon>
               <ListItemText primary="Testpage" />
-            </ListItemButton>
+            </ListItemButton> */}
             <Divider />
             <ListItemButton style={{ backgroundColor: "#dcdedc" }}>
               <ListItemIcon>
