@@ -35,6 +35,7 @@ import TestPage from "../../pages/testPage";
 import BugReportIcon from "@mui/icons-material/BugReport";
 import HSLUGIS from "../../pages/dvis";
 import BadgeIcon from "@mui/icons-material/Badge";
+import TwitterIcon from "@mui/icons-material/Twitter";
 
 function Copyright(props) {
   return (
@@ -203,7 +204,16 @@ function DashboardContent() {
                 <BugReportIcon />
               </ListItemIcon>
               <ListItemText primary="Testpage" />
-            </ListItemButton> */}
+            </ListItemButton>
+            <ListItemButton
+              component={Link}
+              to="https://severin-nlp.streamlit.app/"
+            >
+              <ListItemIcon>
+                <TwitterIcon />
+              </ListItemIcon>
+              <ListItemText primary="NLP Classification"></ListItemText>
+            </ListItemButton>
             <Divider />
             <ListItemButton style={{ backgroundColor: "#dcdedc" }}>
               <ListItemIcon>
