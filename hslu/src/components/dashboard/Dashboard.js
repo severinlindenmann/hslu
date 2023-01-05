@@ -204,7 +204,7 @@ function DashboardContent() {
                 <BugReportIcon />
               </ListItemIcon>
               <ListItemText primary="Testpage" />
-            </ListItemButton>
+            </ListItemButton> */}
             <ListItemButton
               component={Link}
               to="https://severin-nlp.streamlit.app/"
