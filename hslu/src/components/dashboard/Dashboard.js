@@ -36,6 +36,7 @@ import BugReportIcon from "@mui/icons-material/BugReport";
 import HSLUGIS from "../../pages/dvis";
 import BadgeIcon from "@mui/icons-material/Badge";
 import TwitterIcon from "@mui/icons-material/Twitter";
+import TagManager from "react-gtm-module";
 
 function Copyright(props) {
   return (
@@ -108,6 +109,10 @@ function DashboardContent() {
   const toggleDrawer = () => {
     setOpen(!open);
   };
+
+  useEffect(() => {
+    TagManager.initialize({ gtmId: "GTM-TNBKHQX" });
+  }, []);
 
   return (
     <ThemeProvider theme={mdTheme}>
